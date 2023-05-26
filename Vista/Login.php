@@ -20,8 +20,8 @@
                     <input type="email" id="email" name="email" placeholder="example@gmail.com" required class="form-control" />
                 </div>
                 <div class="form-group">
-                    <label for="id" class="control-label"></label>
-                    <input type="password" value="FakePSW" id="myInput" name="id" placeholder="Ingresa tu ID" required class="form-control" />
+                    <label for="contrasena" class="control-label"></label>
+                    <input type="password" value="FakePSW" id="myInput" name="contrasena" placeholder="Ingresa Contraseña" required class="form-control" />
                     <input type="checkbox" onclick="myFunction()">Ver Contraseña
                 </div>
                 <div class="form-group mt-4 text-center">

@@ -19,7 +19,7 @@
   position: relative;
   display: block;
   width: calc(107% + 1.3px);
-  height: 110px;
+  height: 80px;
   transform: rotateY(180deg);
 }
 

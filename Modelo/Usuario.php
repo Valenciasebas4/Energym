@@ -123,10 +123,70 @@ class Usuario {
         }
       }
     
-      function validarUsuario($id, $email, $db) {
+
+      function obtenerId($email, $db) {
+        try{
+        $sql = "SELECT id FROM usuarios WHERE email = :email";
+      
+        $stmt = $db->prepare($sql);
+      
+        // Asignamos los valores a los parámetros de la consulta
+        $stmt->bindParam(':email', $email, PDO::PARAM_INT);
+      
+      
+        $stmt->execute();
+      
+        // Obtenemos el resultado de la consulta
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+      
+        // Si se encontró el rol del usuario, lo retornamos; de lo contrario, retornamos false
+        return ($result) ? $result['id'] : false;
+        }catch(PDOException $e) {
+          echo "Error al editar usuario: " . $e->getMessage();
+          return false;
+      }
+      }
+
+
+
+
+
+      function login($email, $contrasena, $db) {
+        // Consultar la base de datos para obtener el hash de la contraseña almacenada
+        $stmt = $db->prepare("SELECT contrasena FROM usuarios WHERE email = $email");
+        $stmt->execute(array($email));
+        $hashContrasena = $stmt->fetchColumn();
+    
+        // Verificar si el correo electrónico existe en la base de datos
+        if (!$hashContrasena) {
+            return false;
+        }
+    
+        // Verificar si la contraseña ingresada coincide con el hash almacenado
+        if (password_verify($contrasena, $hashContrasena)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      function validarUsuario($contrasena, $email, $db) {
         try {
-            $stmt = $db->prepare("SELECT COUNT(*) FROM usuarios WHERE id = :id AND email = :email");
-            $stmt->bindParam(':id', $id);
+            $stmt = $db->prepare("SELECT COUNT(*) FROM usuarios WHERE contrasena = :contrasena AND email = :email");
+            $stmt->bindParam(':contrasena', $contrasena);
             $stmt->bindParam(':email', $email);
             $stmt->execute();
     
@@ -210,6 +270,9 @@ function obtenerNombreUsuario($id, $db) {
     return false;
 }
 }
+
+
+
 
 // Consultamos el rol del usuario
 function obtenerRol($id, $db) {
