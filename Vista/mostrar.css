@@ -1,0 +1,19 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  padding-top: 70px; /* Espacio para evitar que el contenido se superponga al nav fijo */
+}
+
+.panel-1 {
+  background: linear-gradient(#0277A8, 30%, rgb(255, 255, 255));
+  align-items: center;
+}

@@ -1,0 +1,11 @@
+body {
+    background: linear-gradient(#0277A8, 30%, rgb(255, 255, 255));
+  }
+
+  .container {
+    min-height: calc(100% - 60px); /* Resta la altura de la barra de navegación */
+    /* Ajusta los márgenes superiores e inferiores según tus necesidades */
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+  

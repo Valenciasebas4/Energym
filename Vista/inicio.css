@@ -1,0 +1,224 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+
+body {
+  padding-top: 70px; /* Espacio para evitar que el contenido se superponga al nav fijo */
+}
+
+/*header {
+  position: fixed;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}*/
+
+h1 {
+  text-align: center;
+}
+
+.banner {
+  background-image: url("../Vista/img/img-gym/editar.jpeg");
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  margin-bottom: 20px;
+  height: 500px;
+  /* Asegurarse de que el banner esté por encima del nav */
+  z-index: 999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+}
+
+
+
+.banner h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.banner p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.banner .btn {
+  font-size: 16px;
+}
+/*.banner {
+    background-image: url("../Vista/img/img-gym/editar.jpeg");
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+}*/
+
+.banner h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #000000;
+}
+
+.banner p {
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+.sec-1{
+  margin: 100px auto;
+  height: 400px;
+
+}
+.sec-2{
+   margin: 50px auto;
+   height: 700px;
+}
+
+.panel-1 {
+  background-image: url("../Vista/img/img-gym/mostrar.jpeg");
+  /*background: linear-gradient(#0277A8, 30%, rgb(255, 255, 255));*/
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #000000;
+}
+
+.panel-2 {
+  background-image: url("../Vista/img/img-gym/maquina.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  color: #030303;
+}
+.panel-2 h2{
+  color: white;
+}
+.panel-2 p{
+  color: white;
+}
+.panel-3 {
+  background-image: url("../Vista/img/img-gym/pesa-3.jpg");
+  opacity: 0.9;
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  align-items: center;
+}
+.panel-3 h2{
+  color: #0277A8;
+}
+.panel-3 h3{
+  color: #ffffff;
+}
+.panel-3 p{
+  color: #f1f1f1;
+}
+
+.panel-4 {
+  border-bottom: 1px solid #0277A8;
+  border-top: 1px solid #0277A8;
+  color: #0277A8;
+}
+.panel-5 {
+  background-image: url("../Vista/img/img-gym/pesa-4.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 700px;
+  align-items: center;
+}
+/*.panel-5 {
+  border-left: 1px solid #0277A8;
+  border-right: 1px solid #0277A8;
+  color: #0c0d0e;
+}*/
+
+.panel-5 h2 {
+  color: #0277A8;
+}
+.panel-5 h1 {
+  color: #0277A8;
+}
+.panel-5 p {
+  color: #ffffff;
+}
+
+.panel-6 {
+  border-left: 1px solid #0277A8;
+  border-right: 1px solid #0277A8;
+  color: #0c0d0e;
+}
+
+.panel-6 h2 {
+  color: #0277A8;
+}
+.panel-6 h1 {
+  color: #0277A8;
+}
+.panel-6 p {
+  color: #0a0a0a;
+}
+
+.panel-7 {
+  border-top: 1px solid #0277A8;
+  border-bottom: 1px solid #0277A8;
+  color: #0c0d0e;
+}
+
+.panel-7 h2 {
+  color: #0277A8;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+  }
+  .gallery img {
+    width: 70%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .class {
+    margin-bottom: 20px;
+  }
+  .class h2 {
+    margin: 0;
+  }
+  .class p {
+    margin-top: 5px;
+  }
+
+  .container {
+  min-height: calc(100% - 80px); /* Resta la altura de la barra de navegación */
+  /* Ajusta los márgenes superiores e inferiores según tus necesidades */
+  margin-top: 80px;
+  margin-bottom: 60px;
+}
+
+
+
+
+
+footer {
+  width: 100%;
+  height: 80px; /* Ajusta la altura según tus necesidades */
+}
