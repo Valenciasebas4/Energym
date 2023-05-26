@@ -10,6 +10,7 @@ class Usuario {
     private $telefono;
     private $fregistro;
     private $rol;
+    private $contrasena;
     private $db;
   
 
@@ -17,6 +18,7 @@ class Usuario {
       $this->db = $db;
       $this->id = $id;
   }
+
 
 
     public function getId() {
@@ -82,6 +84,15 @@ class Usuario {
     public function setRol($rol) {
       $this->rol = $rol;
     }
+
+    
+  public function getContrasena() {
+    return $this->contrasena;
+  }
+
+  public function setContrasena($contrasena) {
+    $this->contrasena = $contrasena;
+  }
   
     public function getDb() {
       return $this->db;
@@ -92,9 +103,9 @@ class Usuario {
     }
 }
  // Guarda la informacion en la base de datos
-    function guardarUsuario($id, $nombre, $apellido, $fnacimiento, $email, $telefono,$fregistro,$rol, $db) {
+    function guardarUsuario($id, $nombre, $apellido, $fnacimiento, $email, $telefono,$fregistro,$rol,$contrasena, $db) {
         try {
-          $stmt = $db->prepare("INSERT INTO usuarios (id, nombre, apellido, fnacimiento, email, telefono, fregistro,rol) VALUES (:id, :nombre, :apellido, :fnacimiento, :email, :telefono, :fregistro, :rol)");
+          $stmt = $db->prepare("INSERT INTO usuarios (id, nombre, apellido, fnacimiento, email, telefono,fregistro,rol, contrasena) VALUES (:id, :nombre, :apellido, :fnacimiento, :email, :telefono, :fregistro, :rol, :contrasena)");
           $stmt->bindParam(':id', $id);
           $stmt->bindParam(':nombre', $nombre);
           $stmt->bindParam(':apellido', $apellido);
@@ -103,6 +114,7 @@ class Usuario {
           $stmt->bindParam(':telefono', $telefono);
           $stmt->bindParam(':fregistro', $fregistro);
           $stmt->bindParam(':rol', $rol);
+          $stmt->bindParam(':contrasena', $contrasena);
           $stmt->execute();
           return true;
         } catch(PDOException $e) {
@@ -133,7 +145,7 @@ class Usuario {
         }
     }
 
-    function validarCrearUsuario($id, $nombre, $apellido, $fnacimiento, $email, $telefono,$fregistro,$rol, $db) {
+    function validarCrearUsuario($id, $nombre, $apellido, $fnacimiento, $email, $telefono,$fregistro,$rol,$contrasena, $db) {
       try {
           // Verificar si el usuario ya existe
           $stmt = $db->prepare("SELECT COUNT(*) FROM usuarios WHERE id = :id AND email = :email");
@@ -147,17 +159,17 @@ class Usuario {
               return false;
           } else {
               // El usuario no existe, crearlo
-              return guardarUsuario($id, $nombre, $apellido, $fnacimiento, $email, $telefono,$fregistro,$rol, $db);
+              return guardarUsuario($id, $nombre, $apellido, $fnacimiento, $email, $telefono,$fregistro,$rol,$contrasena, $db);
           }
       } catch(PDOException $e) {
-          echo "Error al validar o crear usuario: " . $e->getMessage();
+          echo "Error al validar o crear usuario: ";
           return false;
       }
   }
 
-  function editarUsuario($id, $nombre, $apellido, $fnacimiento, $email, $telefono,$fregistro,$rol, $db) {
+  function editarUsuario($id, $nombre, $apellido, $fnacimiento, $email, $telefono,$fregistro,$rol,$contrasena, $db) {
     try {
-        $stmt = $db->prepare("UPDATE usuarios SET nombre=:nombre, apellido=:apellido, fnacimiento=:fnacimiento, email=:email, telefono=:telefono, fregistro=:fregistro, rol=:rol WHERE id=:id");
+        $stmt = $db->prepare("UPDATE usuarios SET nombre=:nombre, apellido=:apellido, fnacimiento=:fnacimiento, email=:email, telefono=:telefono, fregistro=:fregistro, rol=:rol, contrasena=:contrasena WHERE id=:id");
         $stmt->bindParam(':id', $id);
         $stmt->bindParam(':nombre', $nombre);
         $stmt->bindParam(':apellido', $apellido);
@@ -166,6 +178,7 @@ class Usuario {
         $stmt->bindParam(':telefono', $telefono);
         $stmt->bindParam(':fregistro', $fregistro);
         $stmt->bindParam(':rol', $rol);
+        $stmt->bindParam(':contrasena', $contrasena);
         $stmt->execute();
         return true;
     } catch(PDOException $e) {
@@ -264,4 +277,36 @@ function existeEmail($email, $db) {
   $count = $stmt->fetchColumn();
   return ($count > 0);
 }
+
+
+function validarContrasena($contrasena) {
+  // Verificar si la contraseña tiene al menos 8 caracteres
+  if (strlen($contrasena) < 8) {
+      return false;
+  }
+  
+  // Verificar si la contraseña tiene al menos un carácter especial
+  if (!preg_match('/[!@#$%^&*(),.?":{}|<>]/', $contrasena)) {
+      return false;
+  }
+  
+  // Verificar si la contraseña tiene al menos una mayúscula
+  if (!preg_match('/[A-Z]/', $contrasena)) {
+      return false;
+  }
+  
+  // Verificar si la contraseña contiene números
+  if (!preg_match('/[0-9]/', $contrasena)) {
+      return false;
+  }
+  
+  // Verificar si la contraseña tiene al menos una minúscula
+  if (!preg_match('/[a-z]/', $contrasena)) {
+      return false;
+  }
+  
+  // La contraseña cumple con todos los requisitos
+  return true;
+}
+
 ?>

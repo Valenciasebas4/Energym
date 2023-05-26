@@ -38,6 +38,10 @@
                     <label for="telefono" class="control-label"></label>
                     <input type="text" id="telefono" name="telefono" placeholder="Telefono" class="form-control" />
                 </div>
+                <div class="form-group">
+                    <label for="contrasena" class="control-label"></label>
+                    <input type="text" id="contrasena" name="contrasena"  class="form-control" />
+                </div>
                 <div class="form-group mt-4 text-center">
                     <input type="submit" value="Registrar" class="btn btn-outline-primary" />
                     <a href="Login.php" class="btn btn-outline-secondary">Volver</a>
