@@ -84,11 +84,11 @@ $db->exec($query);
     <p>*No puedes agregar más de una clase en la misma fecha*</p>
     <div id="events-container">
     <?php if (isset($mensajeError) && !empty($mensajeError)) { ?>
-    <div class="alert alert-danger">
-        <?php echo $mensajeError; ?>
-    </div>
-<?php } ?>   
-      <?php
+      <div class="alert alert-danger">
+          <?php echo $mensajeError; ?>
+      </div>
+      <?php } ?>   
+    <?php
 
         // Verificar si hay resultados
         if ($resultado2->rowCount() > 0) {
@@ -127,18 +127,22 @@ $db->exec($query);
       max-width: 800px;
       margin: 0 auto;
       padding: 20px;
+      
     }
     .event {
       margin-bottom: 10px;
       padding: 10px;
       background-color: #f2f2f2;
       border-radius: 4px;
+      
     }
     .event-title {
       font-weight: bold;
       margin: 0;
+      color: #0277A8;
     }
     .event-date {
       margin: 0;
     }
+
   </style>

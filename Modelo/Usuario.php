@@ -323,11 +323,14 @@ function obtenerFnacimiento($id, $db) {
 }
 
 
-      
+
+
+
+
 
 // Función para verificar si un ID ya existe en la base de datos
-function existeID($id, $db) {
-  $stmt = $db->prepare("SELECT COUNT(*) FROM usuarios WHERE id = ?");
+function existeContrasena($contrasena, $db) {
+  $stmt = $db->prepare("SELECT COUNT(*) FROM usuarios WHERE contrasena = ?");
   $stmt->execute(array($id));
   $count = $stmt->fetchColumn();
   return ($count > 0);

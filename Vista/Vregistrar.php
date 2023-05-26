@@ -15,10 +15,9 @@ session_start();
 </head>
 <body>
 
-    <div style="display: flex; justify-content: center; align-items: center; margin: 1px auto; height: 540px;" class="rounded-pill panel-1 ">
+    <div style="display: flex; justify-content: center; align-items: center; margin: 10px auto; height: 540px;" class="rounded-pill panel-1 ">
         <div class="col-md-4 text-center">
             
-            <?php echo $_SESSION['contrasena'] ; ?>
       
             
             <h3>Registrar</h3>
@@ -49,7 +48,8 @@ session_start();
                 </div>
                 <div class="form-group">
                     <label for="contrasena" class="control-label"></label>
-                    <input type="text" id="contrasena" name="contrasena"  class="form-control" />
+                    <input type="password" value="" id="myInput" name="contrasena" placeholder="********" required class="form-control" />
+                    <input type="checkbox" onclick="myFunction()">Ver Contraseña
                 </div>
                 <div class="form-group mt-4 text-center">
                     <input type="submit" value="Registrar" class="btn btn-outline-primary" />
@@ -66,5 +66,15 @@ session_start();
     </svg>
 </div>
 </body>
-
 </html>
+<script>
+    function myFunction() {
+    var x = document.getElementById("myInput");
+    if (x.type === "password") {
+    x.type = "text";
+    } else {
+    x.type = "password";
+    }
+    }
+
+</script>
